@@ -351,19 +351,18 @@ jobs:
       - name: Downloading zip and tar.gz packages
         uses: actions/download-artifact@v3
         with:
-          name: 'cmsis-toolbox-zip'
+          name: cmsis-toolbox-zip
           path: zip
 
       - name: Downloading checksum file
         uses: actions/download-artifact@v3
         with:
-          name: 'cmsis-toolbox-checksums'
+          name: cmsis-toolbox-checksums
           path: zip
 
-      - name: Move darwin zipfile to a pkg folder && extract it
+      - name: Untaring cmsis-toolbox for mac
         run: |
           tar xzf cmsis-toolbox-darwin-amd64.tar.gz
-          rm -rf cmsis-toolbox-darwin-amd64.tar.gz
         working-directory: zip
 
       - name: Create a .pkg installer
