@@ -331,8 +331,7 @@ jobs:
           if-no-files-found: error
           working-directory: toolbox/zip
 
-      - name: Attach installer to release assets
-        id: release_assets
+      - name: Attach zip packages to release assets
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -386,7 +385,6 @@ jobs:
         working-directory: zip
 
       - name: Attach macOS installer and cmsis-toolbox-checksums
-        id: release_assets_2
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
