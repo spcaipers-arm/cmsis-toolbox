@@ -317,25 +317,23 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cmsis-toolbox-zip
-          path: cmsis-toolbox-darwin-amd64.tar.gz
+          path: toolbox/zip/cmsis-toolbox-darwin-amd64.tar.gz
           retention-days: 1
           if-no-files-found: error
-          working-directory: toolbox/zip
 
       - name: Archive checksums for macOS package
         uses: actions/upload-artifact@v3
         with:
           name: cmsis-toolbox-checksums
-          path: cmsis-toolbox-checksums.txt
+          path: toolbox/zip/cmsis-toolbox-checksums.txt
           retention-days: 1
           if-no-files-found: error
-          working-directory: toolbox/zip
 
       - name: Attach zip packages to release assets
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: zip/cmsis-toolbox-*
+          file: toolbox/zip/cmsis-toolbox-*
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
