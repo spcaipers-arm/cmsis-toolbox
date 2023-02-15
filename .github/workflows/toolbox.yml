@@ -362,12 +362,13 @@ jobs:
 
       - name: Untaring cmsis-toolbox for mac
         run: |
-          tar xzf cmsis-toolbox-darwin-amd64.tar.gz
+          tar -xzf cmsis-toolbox-darwin-amd64.tar.gz
         working-directory: zip
 
       - name: Create a .pkg installer
         run: |
-          VERSION=$(cut -d/ -f5 <<< ${{ github.ref }})
+          VERSION=$(echo ${{ github.ref }} | cut -d/ -f3)
+          echo $VERSION
           pkgbuild \
             --identifier cmsis-toolbox.app \
             --root cmsis-toolbox-darwin-amd64 \
